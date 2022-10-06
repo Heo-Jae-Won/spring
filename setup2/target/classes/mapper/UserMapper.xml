@@ -6,7 +6,7 @@
 		where uid
 		like concat('%',#{word},'%')
 		or uname like concat('%',#{word},'%')
-		limit 5 offset #{start}
+		limit #{num} offset #{start}
 	</select>
 	<select id="total" resultType="int">
 		select count(*) from tbl_user

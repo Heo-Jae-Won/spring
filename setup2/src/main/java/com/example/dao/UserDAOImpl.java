@@ -16,10 +16,11 @@ public class UserDAOImpl implements UserDAO{
 	String namespace="com.example.mapper.UserMapper";
 
 	@Override
-	public List<UserVO> list(String word, int page) {
+	public List<UserVO> list(String word, int page, int num) {
 		HashMap<String,Object>map=new HashMap<>();
 		map.put("word", word);
-		map.put("start", (page-1)*5);
+		map.put("start", (page-1)*num);
+		map.put("num", num);
 		return session.selectList(namespace+".list",map);
 	}
 

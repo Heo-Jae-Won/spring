@@ -19,9 +19,9 @@ public class UserRestController {
 	UserDAO udao;
 	
 	@RequestMapping("/list")
-	public HashMap<String,Object> list(String word,int page){
+	public HashMap<String,Object> list(String word,int page,int num){
 		HashMap<String,Object>map=new HashMap<>();
-		map.put("list", udao.list(word, page));
+		map.put("list", udao.list(word, page,num));
 		map.put("total", udao.total(word));
 		return map;
 	}
