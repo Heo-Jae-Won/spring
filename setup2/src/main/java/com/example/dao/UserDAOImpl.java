@@ -6,14 +6,21 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.UserVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO{
+	
+//	@Resource(name="uploadPath") //bean에 있는 upload Path와 동일해야함. servlet-context XML
+//	String path;
+	
 	@Autowired
 	SqlSession session;
 	String namespace="com.example.mapper.UserMapper";
+	
+
 
 	@Override
 	public List<UserVO> list(String word, int page, int num) {
@@ -37,7 +44,8 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public void insert(UserVO vo) {
-		// TODO Auto-generated method stub
+//		String fileName=path+"photo/"+System.currentTimeMillis()+file.getOriginalFilename(); 
+		
 		session.insert(namespace+".insert",vo);
 	}
 

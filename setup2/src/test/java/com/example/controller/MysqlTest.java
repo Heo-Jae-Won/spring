@@ -6,21 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.example.dao.ReplyDAO;
+import com.example.dao.ProductDAO;
+import com.example.domain.ProductVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
-public class MysqlTest {	
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/*.xml" })
+public class MysqlTest {
 	@Autowired
-	ReplyDAO rdao;
+	ProductDAO dao;
+
+	@Test
+	public void insert() {
+		ProductVO vo = new ProductVO();
+		vo.setPname("포인터");
+		dao.insert(vo);
+	}
 	
 	@Test
 	public void list(){
-		rdao.list(3,4,1016);
-		rdao.total(1016);
+		dao.list(1, 2, "");
 	}
-	
-
-	
 
 }

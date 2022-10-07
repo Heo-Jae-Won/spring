@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ProductMapper">
+	<select id="list" resultType="com.example.domain.ProductVO">
+		select * from tbl_product
+		where
+		pname like concat('%',#{word},'%')
+		or pcode like
+		concat('%',#{word},'%')
+		order by pcode desc
+		limit #{start}, #{num}
+	</select>
+	<select id="total" resultType="int">
+		select count(*) from tbl_product
+		where pname like concat('%',#{word},'%')
+		or pcode like
+		concat('%',#{word},'%')
+	</select>
+	<insert id='insert'>
+		insert into tbl_product(pcode,pname,image,price)
+		values(date_format(now(),'P%Y%m%d%H%i%S'),#{pname},#{image},#{price})
+	</insert>
+</mapper>

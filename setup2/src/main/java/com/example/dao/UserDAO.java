@@ -2,6 +2,8 @@ package com.example.dao;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.domain.UserVO;
 
 public interface UserDAO {

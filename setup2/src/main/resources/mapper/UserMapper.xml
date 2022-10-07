@@ -20,7 +20,7 @@
 		uid=#{uid}
 	</select>
 	<insert id="insert">
-	insert into tbl_user(uname,uid,upass) values(#{uname},#{uid},#{upass})
+	insert into tbl_user(uname,uid,upass,photo) values(#{uname},#{uid},#{upass},#{photo})
 	</insert>
 	<update id="update">
 		update tbl_user set uname=#{uname}, upass=#{upass} where uid=#{uid}
